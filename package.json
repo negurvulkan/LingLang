@@ -1,0 +1,20 @@
+{
+  "name": "linglang-monorepo",
+  "private": true,
+  "version": "1.0.5",
+  "description": "TypeScript-first runtime and tooling workspace for the LingLang DSL.",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  },
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "check": "npm run check --workspaces --if-present",
+    "clean": "npm run clean --workspaces --if-present",
+    "fixtures:consistency": "python checks/run_fixture_consistency.py",
+    "fixtures:validator": "python checks/run_validator_fixture_checks.py",
+    "playground:start": "python -m http.server 4173"
+  }
+}
