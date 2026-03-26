@@ -2,8 +2,6 @@
 
 LingLang is a project for designing a general linguistic DSL for describing languages, language stages, dialects, lexica, phonologies, scripts, grammar, examples, and historical developments in a way that is both pleasant to write and reliable to process.
 
-Hier ist ein kompakter, README-tauglicher Abschnitt für **Beispiel + Abdeckung**, der stilistisch zu deinem bestehenden Text passt und direkt integrierbar ist.
-
 ## Example
 
 A minimal LingLang document describing a small fragment of a language:
