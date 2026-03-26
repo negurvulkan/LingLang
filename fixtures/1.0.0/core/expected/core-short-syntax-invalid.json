@@ -1,0 +1,6 @@
+{
+  "expected_status": "core",
+  "expected_valid": false,
+  "expected_blocks": ["entry", "example", "phoneme"],
+  "expected_short_syntax_target": ["entry", "example", "phoneme"]
+}

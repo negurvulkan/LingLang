@@ -1,0 +1,7 @@
+{
+  "expected_status": "core",
+  "expected_valid": false,
+  "expected_blocks": ["language", "entry", "phonology", "grammar", "script", "example", "text"],
+  "expected_required_missing": ["language.name", "entry.gloss_or_pos", "phonology.vowels_or_consonants", "grammar.categories_or_strategy", "script.type", "example.translation"],
+  "expected_error_codes": ["schema.required_missing", "schema.child_duplicate_id"]
+}

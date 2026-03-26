@@ -1,0 +1,6 @@
+{
+  "expected_status": "advanced",
+  "expected_valid": false,
+  "expected_blocks": ["annotation_layer", "corpus_view"],
+  "expected_required_missing": ["annotation_layer.kind", "corpus_view.texts_or_layers"]
+}

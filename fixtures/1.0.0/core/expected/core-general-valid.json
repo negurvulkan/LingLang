@@ -1,0 +1,6 @@
+{
+  "expected_status": "core",
+  "expected_valid": true,
+  "expected_blocks": ["language", "entry", "phonology", "grammar", "script", "example", "text"],
+  "expected_warning_codes": ["reference.unresolved"]
+}

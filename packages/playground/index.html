@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LingLang Playground</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">LingLang Developer Toolkit</p>
+          <h1>Playground für Long Syntax, AST und Core-Validation</h1>
+          <p class="hero-text">
+            Eine benutzbare erste Web-App für LingLang: schreiben, validieren, kanonisch rendern, Referenzen prüfen und den Dokumentgraphen inspizieren.
+          </p>
+        </div>
+        <div class="hero-card">
+          <div class="hero-stat">
+            <span class="hero-label">Scope</span>
+            <strong id="scopeBadge">stable_core</strong>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-label">Schema Mode</span>
+            <strong id="schemaModeBadge">loading</strong>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-label">Diagnostics</span>
+            <strong id="diagnosticBadge">0</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="toolbar">
+        <label class="control">
+          <span>Beispiel</span>
+          <select id="sampleSelect"></select>
+        </label>
+        <label class="control">
+          <span>Conformance</span>
+          <select id="scopeSelect">
+            <option value="stable_core">stable_core</option>
+            <option value="full_1_0">full_1_0</option>
+          </select>
+        </label>
+        <label class="control">
+          <span>Validation Mode</span>
+          <select id="validationModeSelect">
+            <option value="lenient">lenient</option>
+            <option value="strict">strict</option>
+          </select>
+        </label>
+        <label class="control file-control">
+          <span>Datei laden</span>
+          <input id="fileInput" type="file" accept=".linglang,.txt" />
+        </label>
+        <button id="validateButton" class="action primary">Validieren</button>
+        <button id="canonicalButton" class="action">Canonical Long</button>
+        <button id="resetButton" class="action ghost">Editor zurücksetzen</button>
+      </section>
+
+      <main class="workspace">
+        <section class="editor-panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-eyebrow">Editor</p>
+              <h2>LingLang Source</h2>
+            </div>
+            <p id="editorStatus" class="panel-status">Noch nicht validiert.</p>
+          </div>
+          <textarea id="editor" spellcheck="false"></textarea>
+        </section>
+
+        <section class="inspector-panel">
+          <div class="tabs" id="tabs">
+            <button class="tab is-active" data-tab="diagnostics">Diagnostics</button>
+            <button class="tab" data-tab="ast">AST</button>
+            <button class="tab" data-tab="canonical">Canonical</button>
+            <button class="tab" data-tab="blocks">Blocks</button>
+            <button class="tab" data-tab="views">Views</button>
+            <button class="tab" data-tab="schema">Schema</button>
+          </div>
+
+          <div class="tab-panel is-active" data-panel="diagnostics">
+            <div class="panel-head compact">
+              <div>
+                <p class="panel-eyebrow">Diagnostics</p>
+                <h3>Fehler, Warnungen und Hinweise</h3>
+              </div>
+            </div>
+            <div id="diagnosticsPanel" class="stack"></div>
+          </div>
+
+          <div class="tab-panel" data-panel="ast">
+            <div class="panel-head compact">
+              <div>
+                <p class="panel-eyebrow">AST</p>
+                <h3>Geparste Struktur</h3>
+              </div>
+            </div>
+            <pre id="astPanel" class="code-panel"></pre>
+          </div>
+
+          <div class="tab-panel" data-panel="canonical">
+            <div class="panel-head compact">
+              <div>
+                <p class="panel-eyebrow">Canonical</p>
+                <h3>Kanonische Long Syntax</h3>
+              </div>
+            </div>
+            <pre id="canonicalPanel" class="code-panel"></pre>
+          </div>
+
+          <div class="tab-panel" data-panel="blocks">
+            <div class="panel-head compact">
+              <div>
+                <p class="panel-eyebrow">Inspection</p>
+                <h3>Block- und Referenz-Explorer</h3>
+              </div>
+            </div>
+            <div class="query-bar">
+              <label class="control">
+                <span>Blocktyp filtern</span>
+                <input id="blockFilterInput" type="text" placeholder="z. B. entry, text, soundchange" />
+              </label>
+              <label class="control">
+                <span>Incoming refs für</span>
+                <input id="referenceTargetInput" type="text" placeholder="z. B. entry:varu" />
+              </label>
+            </div>
+            <div id="blocksPanel" class="stack"></div>
+          </div>
+
+          <div class="tab-panel" data-panel="views">
+            <div class="panel-head compact">
+              <div>
+                <p class="panel-eyebrow">Derived Views</p>
+                <h3>Sichtbare Ableitungen aus dem Dokument</h3>
+              </div>
+            </div>
+            <div id="viewsPanel" class="stack"></div>
+          </div>
+
+          <div class="tab-panel" data-panel="schema">
+            <div class="panel-head compact">
+              <div>
+                <p class="panel-eyebrow">Schema</p>
+                <h3>Normative Blockregeln</h3>
+              </div>
+            </div>
+            <label class="control schema-select">
+              <span>Blockschema</span>
+              <select id="schemaBlockSelect"></select>
+            </label>
+            <div id="schemaPanel" class="stack"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

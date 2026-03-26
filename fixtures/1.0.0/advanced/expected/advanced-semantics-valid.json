@@ -1,0 +1,5 @@
+{
+  "expected_status": "advanced",
+  "expected_valid": true,
+  "expected_blocks": ["semantic_domain", "sense", "semantic_role", "pragmatic_profile", "prosody"]
+}

@@ -1,0 +1,35 @@
+dsl 1.0.0
+
+morpheme -ren {
+  type: suffix
+  gloss: "POSS"
+}
+
+paradigm noun_singular {
+  dimensions: [case, number]
+}
+
+construction possessive_suffix {
+  pattern: "N + POSS"
+  category: possession
+}
+
+stage proto_taren {
+  name: "Proto-Taren"
+}
+
+soundchange proto_to_old {
+  from_stage: stage:proto_taren
+  to_stage: stage:old_taren
+
+  rule sc1 {
+    from: p
+    to: f
+    environment: V_V
+  }
+}
+
+etymology varu_et {
+  origin: language:proto_taren
+  development: "Regular development into Old Taren."
+}

@@ -1,0 +1,6 @@
+{
+  "expected_status": "core",
+  "expected_valid": false,
+  "expected_blocks": ["morpheme", "paradigm", "construction", "soundchange", "etymology", "stage"],
+  "expected_required_missing": ["morpheme.type_or_gloss", "paradigm.dimensions", "construction.pattern_or_base", "soundchange.to_stage", "soundchange.rule", "etymology.origin_or_development", "stage.name"]
+}

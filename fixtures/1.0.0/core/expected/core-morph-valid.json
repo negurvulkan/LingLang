@@ -1,0 +1,6 @@
+{
+  "expected_status": "core",
+  "expected_valid": true,
+  "expected_blocks": ["morpheme", "paradigm", "construction", "soundchange", "etymology", "stage"],
+  "expected_warning_codes": ["reference.unresolved"]
+}

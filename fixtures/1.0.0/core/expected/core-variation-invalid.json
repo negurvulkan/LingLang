@@ -1,0 +1,6 @@
+{
+  "expected_status": "core",
+  "expected_valid": false,
+  "expected_blocks": ["dialect", "register", "phoneme", "analysis"],
+  "expected_required_missing": ["dialect.name", "register.name_or_label", "phoneme.symbol", "analysis.target"]
+}

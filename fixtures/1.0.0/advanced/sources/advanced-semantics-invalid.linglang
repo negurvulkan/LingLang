@@ -1,0 +1,17 @@
+dsl 1.0.0
+
+semantic_domain bad_domain {
+}
+
+sense bad_sense {
+}
+
+semantic_role bad_role {
+}
+
+pragmatic_profile bad_prag {
+}
+
+prosody bad_pros {
+  hierarchy: [syllable, foot]
+}

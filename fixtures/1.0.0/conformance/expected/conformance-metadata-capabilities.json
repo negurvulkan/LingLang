@@ -1,0 +1,5 @@
+{
+  "expected_valid": true,
+  "expected_conformance_subjects": ["metadata_capabilities"],
+  "expected_metadata_optional": ["source_span", "leading_comments", "trailing_comments", "origin"]
+}

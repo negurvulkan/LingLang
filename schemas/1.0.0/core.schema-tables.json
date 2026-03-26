@@ -1,0 +1,719 @@
+{
+  "dsl_version": "1.0.0",
+  "table_version": "1.0.0",
+  "authority": "co-normative",
+  "layer": "core",
+  "generated_from": [
+    "spec_1.0.0-core.md",
+    "spec_1.0.0.md",
+    "spec_v0.2.md",
+    "spec_v0.3.md",
+    "spec_v0.4.md",
+    "spec_v0.8.md"
+  ],
+  "shared_fields": [
+    {"name": "status", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["draft", "living", "historical", "reconstructed", "deprecated"], "notes": "Cross-cutting status where explicitly allowed."},
+    {"name": "certainty", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["low", "medium", "high"], "notes": "Cross-cutting confidence marker where explicitly allowed."},
+    {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Cross-cutting explanatory note where explicitly allowed."}
+  ],
+  "blocks": [
+    {
+      "name": "language",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.2.0",
+      "stable_in": "1.0.0",
+      "description": "Language metadata block.",
+      "allowed_children": [],
+      "required_fields": [
+        {"name": "name", "value_kinds": ["string"], "required": true, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Primary language name."}
+      ],
+      "optional_fields": [
+        {"name": "native_name", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Native self-designation."},
+        {"name": "family", "value_kinds": ["string", "atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Language family label."},
+        {"name": "scripts", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["script"], "controlled_values": [], "notes": "Writing systems."},
+        {"name": "dialects", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["dialect"], "controlled_values": [], "notes": "Associated dialects."},
+        {"name": "registers", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["register"], "controlled_values": [], "notes": "Associated registers."},
+        {"name": "default_dialect", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["dialect"], "controlled_values": [], "notes": "Default dialect."},
+        {"name": "stages", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["stage"], "controlled_values": [], "notes": "Historical stages."},
+        {"name": "periods", "value_kinds": ["list", "string", "object"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Periods."},
+        {"name": "regions", "value_kinds": ["list"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Regions."},
+        {"name": "based_on", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["language", "stage"], "controlled_values": [], "notes": "Base language or stage."},
+        {"name": "status", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["draft", "living", "historical", "reconstructed", "deprecated"], "notes": "Language status."},
+        {"name": "certainty", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["low", "medium", "high"], "notes": "Confidence marker."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": ["pos", "ipa", "translation"],
+      "reference_fields": [
+        {"name": "scripts", "reference_targets": ["script"]},
+        {"name": "dialects", "reference_targets": ["dialect"]},
+        {"name": "registers", "reference_targets": ["register"]},
+        {"name": "default_dialect", "reference_targets": ["dialect"]},
+        {"name": "stages", "reference_targets": ["stage"]},
+        {"name": "based_on", "reference_targets": ["language", "stage"]}
+      ],
+      "validation_rules": ["name is required"],
+      "examples_ref": ["spec_v0.2.md:language"]
+    },
+    {
+      "name": "entry",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.2.0",
+      "stable_in": "1.0.0",
+      "description": "Lexical entry block.",
+      "allowed_children": [],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "gloss", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Lexical gloss."},
+        {"name": "pos", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["noun", "verb", "adjective", "adverb", "particle", "pronoun"], "notes": "Part-of-speech starter set."},
+        {"name": "ipa", "value_kinds": ["ipa"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "IPA form."},
+        {"name": "derived_from", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["entry", "morpheme"], "controlled_values": [], "notes": "Derivational source references."},
+        {"name": "semantic_field", "value_kinds": ["list"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Semantic field labels."},
+        {"name": "valency", "value_kinds": ["atom", "string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Valency label."},
+        {"name": "register", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["register"], "controlled_values": [], "notes": "Primary register."},
+        {"name": "registers", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["register"], "controlled_values": [], "notes": "Associated registers."},
+        {"name": "etymology", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["etymology"], "controlled_values": [], "notes": "Etymology reference."},
+        {"name": "morphemes", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["morpheme"], "controlled_values": [], "notes": "Morpheme composition."},
+        {"name": "paradigm", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["paradigm"], "controlled_values": [], "notes": "Paradigm reference."},
+        {"name": "stage", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["stage"], "controlled_values": [], "notes": "Stage association."}
+      ],
+      "disallowed_fields": ["scripts", "translation"],
+      "reference_fields": [
+        {"name": "derived_from", "reference_targets": ["entry", "morpheme"]},
+        {"name": "register", "reference_targets": ["register"]},
+        {"name": "registers", "reference_targets": ["register"]},
+        {"name": "etymology", "reference_targets": ["etymology"]},
+        {"name": "morphemes", "reference_targets": ["morpheme"]},
+        {"name": "paradigm", "reference_targets": ["paradigm"]},
+        {"name": "stage", "reference_targets": ["stage"]}
+      ],
+      "validation_rules": ["at least one of gloss or pos must exist"],
+      "examples_ref": ["spec_v0.2.md:entry", "spec_v0.3.md:entry"]
+    },
+    {
+      "name": "phonology",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.2.0",
+      "stable_in": "1.0.0",
+      "description": "Phonology inventory and process block.",
+      "allowed_children": [],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "vowels", "value_kinds": ["ipa", "string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Vowel inventory."},
+        {"name": "consonants", "value_kinds": ["ipa", "string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Consonant inventory."},
+        {"name": "syllable", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Syllable structure."},
+        {"name": "stress", "value_kinds": ["atom", "string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Stress summary."},
+        {"name": "tone", "value_kinds": ["atom", "string", "object"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Tone summary."},
+        {"name": "length", "value_kinds": ["atom", "string", "object"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Length summary."},
+        {"name": "based_on", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["phonology", "language", "dialect"], "controlled_values": [], "notes": "Base system."},
+        {"name": "stage", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["stage"], "controlled_values": [], "notes": "Stage association."},
+        {"name": "affected_by", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["soundchange"], "controlled_values": [], "notes": "Affecting sound changes."},
+        {"name": "phonemes", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["phoneme"], "controlled_values": [], "notes": "Explicit phoneme inventory."}
+      ],
+      "disallowed_fields": ["translation", "pos"],
+      "reference_fields": [
+        {"name": "based_on", "reference_targets": ["phonology", "language", "dialect"]},
+        {"name": "stage", "reference_targets": ["stage"]},
+        {"name": "affected_by", "reference_targets": ["soundchange"]},
+        {"name": "phonemes", "reference_targets": ["phoneme"]}
+      ],
+      "validation_rules": ["at least one of vowels or consonants must exist"],
+      "examples_ref": ["spec_v0.2.md:phonology", "spec_v0.4.md:phonology"]
+    },
+    {
+      "name": "grammar",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.2.0",
+      "stable_in": "1.0.0",
+      "description": "Grammar strategy and category block.",
+      "allowed_children": ["categories", "strategy_section"],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "based_on", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["grammar", "language", "stage"], "controlled_values": [], "notes": "Parent grammar."},
+        {"name": "constructions", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["construction"], "controlled_values": [], "notes": "Linked constructions."},
+        {"name": "paradigms", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["paradigm"], "controlled_values": [], "notes": "Linked paradigms."},
+        {"name": "status", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["draft", "living", "historical", "reconstructed", "deprecated"], "notes": "Grammar status."},
+        {"name": "certainty", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["low", "medium", "high"], "notes": "Confidence marker."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": ["ipa", "translation"],
+      "reference_fields": [
+        {"name": "based_on", "reference_targets": ["grammar", "language", "stage"]},
+        {"name": "constructions", "reference_targets": ["construction"]},
+        {"name": "paradigms", "reference_targets": ["paradigm"]}
+      ],
+      "validation_rules": ["grammar must contain either categories or at least one named strategy section"],
+      "examples_ref": ["spec_v0.2.md:grammar"]
+    },
+    {
+      "name": "script",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.2.0",
+      "stable_in": "1.0.0",
+      "description": "Script and orthography block.",
+      "allowed_children": ["grapheme", "orthography"],
+      "required_fields": [
+        {"name": "type", "value_kinds": ["atom"], "required": true, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Script type."}
+      ],
+      "optional_fields": [
+        {"name": "direction", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Writing direction."},
+        {"name": "source", "value_kinds": ["object", "string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Source note."},
+        {"name": "status", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["draft", "living", "historical", "reconstructed", "deprecated"], "notes": "Script status."},
+        {"name": "certainty", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["low", "medium", "high"], "notes": "Confidence marker."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": ["pos", "translation"],
+      "reference_fields": [{"name": "grapheme.*.phoneme", "reference_targets": ["phoneme"]}],
+      "validation_rules": ["type is required"],
+      "examples_ref": ["spec_v0.2.md:script"]
+    },
+    {
+      "name": "example",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.2.0",
+      "stable_in": "1.0.0",
+      "description": "Glossed example block.",
+      "allowed_children": [],
+      "required_fields": [
+        {"name": "surface", "value_kinds": ["string"], "required": true, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Surface form."},
+        {"name": "translation", "value_kinds": ["string"], "required": true, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Translation."}
+      ],
+      "optional_fields": [
+        {"name": "morph", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Morph segmentation."},
+        {"name": "gloss", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Interlinear gloss string."},
+        {"name": "language", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["language", "dialect", "stage"], "controlled_values": [], "notes": "Language context."},
+        {"name": "dialect", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["dialect"], "controlled_values": [], "notes": "Dialect context."},
+        {"name": "register", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["register"], "controlled_values": [], "notes": "Register context."},
+        {"name": "stage", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["stage"], "controlled_values": [], "notes": "Stage context."},
+        {"name": "text", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["text"], "controlled_values": [], "notes": "Source text."},
+        {"name": "uses", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["entry", "morpheme", "construction", "language"], "controlled_values": [], "notes": "Referenced items used in the example."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": ["family", "scripts"],
+      "reference_fields": [
+        {"name": "language", "reference_targets": ["language", "dialect", "stage"]},
+        {"name": "dialect", "reference_targets": ["dialect"]},
+        {"name": "register", "reference_targets": ["register"]},
+        {"name": "stage", "reference_targets": ["stage"]},
+        {"name": "text", "reference_targets": ["text"]},
+        {"name": "uses", "reference_targets": ["entry", "morpheme", "construction", "language"]}
+      ],
+      "validation_rules": ["surface and translation are required"],
+      "examples_ref": ["spec_v0.2.md:example", "spec_v0.4.md:example"]
+    },
+    {
+      "name": "text",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.4.0",
+      "stable_in": "1.0.0",
+      "description": "Text and segment evidence block.",
+      "allowed_children": ["segment", "translation_block"],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "content", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Whole-text content."},
+        {"name": "language", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["language"], "controlled_values": [], "notes": "Language reference."},
+        {"name": "stage", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["stage"], "controlled_values": [], "notes": "Stage reference."},
+        {"name": "dialect", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["dialect"], "controlled_values": [], "notes": "Dialect reference."},
+        {"name": "register", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["register"], "controlled_values": [], "notes": "Register reference."},
+        {"name": "translation", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Whole-text translation."},
+        {"name": "parallel", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["text"], "controlled_values": [], "notes": "Parallel texts."},
+        {"name": "source", "value_kinds": ["string", "object"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Source citation."},
+        {"name": "tags", "value_kinds": ["list"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Free tags."},
+        {"name": "alignment_notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Alignment note."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": ["pos", "ipa"],
+      "reference_fields": [
+        {"name": "language", "reference_targets": ["language"]},
+        {"name": "stage", "reference_targets": ["stage"]},
+        {"name": "dialect", "reference_targets": ["dialect"]},
+        {"name": "register", "reference_targets": ["register"]},
+        {"name": "parallel", "reference_targets": ["text"]}
+      ],
+      "validation_rules": ["text should contain content or at least one segment child block", "segment identifiers should be unique within a text block"],
+      "examples_ref": ["spec_v0.4.md:text", "spec_v0.9.md:text"]
+    },
+    {
+      "name": "morpheme",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.3.0",
+      "stable_in": "1.0.0",
+      "description": "Morpheme block.",
+      "allowed_children": [],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "type", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["root", "prefix", "suffix", "infix", "circumfix", "clitic", "particle"], "notes": "Morpheme type."},
+        {"name": "gloss", "value_kinds": ["string", "atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Morpheme gloss."},
+        {"name": "function", "value_kinds": ["string", "atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Morphological function."},
+        {"name": "ipa", "value_kinds": ["ipa"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "IPA form."},
+        {"name": "allomorphs", "value_kinds": ["list"], "required": false, "repeatable": false, "reference_targets": ["morpheme"], "controlled_values": [], "notes": "Allomorphs as strings, IPA forms, or morpheme refs."},
+        {"name": "combines_with", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["morpheme", "entry", "register"], "controlled_values": [], "notes": "Typical combination targets."},
+        {"name": "etymology", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["etymology"], "controlled_values": [], "notes": "Etymology reference."}
+      ],
+      "disallowed_fields": ["translation", "scripts"],
+      "reference_fields": [
+        {"name": "allomorphs", "reference_targets": ["morpheme"]},
+        {"name": "combines_with", "reference_targets": ["morpheme", "entry", "register"]},
+        {"name": "etymology", "reference_targets": ["etymology"]}
+      ],
+      "validation_rules": ["at least one of type or gloss must exist"],
+      "examples_ref": ["spec_v0.3.md:morpheme"]
+    },
+    {
+      "name": "paradigm",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.3.0",
+      "stable_in": "1.0.0",
+      "description": "Paradigm table block.",
+      "allowed_children": ["row"],
+      "required_fields": [
+        {"name": "dimensions", "value_kinds": ["list"], "required": true, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Paradigm dimensions."}
+      ],
+      "optional_fields": [
+        {"name": "applies_to", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["entry", "morpheme", "grammar"], "controlled_values": [], "notes": "Target object."},
+        {"name": "based_on", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["paradigm"], "controlled_values": [], "notes": "Base paradigm."},
+        {"name": "status", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["draft", "living", "historical", "reconstructed", "deprecated"], "notes": "Paradigm status."},
+        {"name": "certainty", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["low", "medium", "high"], "notes": "Confidence marker."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": ["ipa", "translation"],
+      "reference_fields": [
+        {"name": "applies_to", "reference_targets": ["entry", "morpheme", "grammar"]},
+        {"name": "based_on", "reference_targets": ["paradigm"]}
+      ],
+      "validation_rules": ["dimensions is required"],
+      "examples_ref": ["spec_v0.3.md:paradigm"]
+    },
+    {
+      "name": "construction",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.3.0",
+      "stable_in": "1.0.0",
+      "description": "Construction pattern block.",
+      "allowed_children": ["constraints"],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "pattern", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Construction pattern."},
+        {"name": "base", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["construction"], "controlled_values": [], "notes": "Base construction."},
+        {"name": "marking", "value_kinds": ["atom", "string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Marking description."},
+        {"name": "category", "value_kinds": ["atom", "string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Construction category."},
+        {"name": "register", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["register"], "controlled_values": [], "notes": "Register association."},
+        {"name": "uses", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["entry", "morpheme", "construction", "grammar"], "controlled_values": [], "notes": "Referenced resources used by the construction."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": ["ipa", "translation"],
+      "reference_fields": [
+        {"name": "base", "reference_targets": ["construction"]},
+        {"name": "register", "reference_targets": ["register"]},
+        {"name": "uses", "reference_targets": ["entry", "morpheme", "construction", "grammar"]}
+      ],
+      "validation_rules": ["at least one of pattern or base must exist"],
+      "examples_ref": ["spec_v0.3.md:construction"]
+    },
+    {
+      "name": "soundchange",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.3.0",
+      "stable_in": "1.0.0",
+      "description": "Sound change block with rule children.",
+      "allowed_children": ["rule"],
+      "required_fields": [
+        {"name": "from_stage", "value_kinds": ["reference"], "required": true, "repeatable": false, "reference_targets": ["stage", "language", "phonology"], "controlled_values": [], "notes": "Source stage or system."},
+        {"name": "to_stage", "value_kinds": ["reference"], "required": true, "repeatable": false, "reference_targets": ["stage", "language", "phonology"], "controlled_values": [], "notes": "Target stage or system."}
+      ],
+      "optional_fields": [
+        {"name": "status", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["draft", "living", "historical", "reconstructed", "deprecated"], "notes": "Sound change status."},
+        {"name": "certainty", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["low", "medium", "high"], "notes": "Confidence marker."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": ["translation", "gloss"],
+      "reference_fields": [
+        {"name": "from_stage", "reference_targets": ["stage", "language", "phonology"]},
+        {"name": "to_stage", "reference_targets": ["stage", "language", "phonology"]},
+        {"name": "rule.*.exceptions", "reference_targets": ["entry", "morpheme", "stage"]}
+      ],
+      "validation_rules": ["from_stage and to_stage are required", "at least one rule child block is required"],
+      "examples_ref": ["spec_v0.3.md:soundchange"]
+    },
+    {
+      "name": "etymology",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.3.0",
+      "stable_in": "1.0.0",
+      "description": "Etymology path block.",
+      "allowed_children": [],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "origin", "value_kinds": ["string", "reference"], "required": false, "repeatable": false, "reference_targets": ["entry", "morpheme", "stage", "language"], "controlled_values": [], "notes": "Origin source."},
+        {"name": "development", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Development summary."},
+        {"name": "source_language", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["language", "stage"], "controlled_values": [], "notes": "Source language or stage."},
+        {"name": "intermediate", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["stage", "language", "entry", "morpheme"], "controlled_values": [], "notes": "Intermediate steps."},
+        {"name": "soundchanges", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["soundchange"], "controlled_values": [], "notes": "Sound changes involved."},
+        {"name": "status", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["draft", "living", "historical", "reconstructed", "deprecated"], "notes": "Etymology status."},
+        {"name": "certainty", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["low", "medium", "high"], "notes": "Confidence marker."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": ["translation", "scripts"],
+      "reference_fields": [
+        {"name": "origin", "reference_targets": ["entry", "morpheme", "stage", "language"]},
+        {"name": "source_language", "reference_targets": ["language", "stage"]},
+        {"name": "intermediate", "reference_targets": ["stage", "language", "entry", "morpheme"]},
+        {"name": "soundchanges", "reference_targets": ["soundchange"]}
+      ],
+      "validation_rules": ["at least one of origin or development must exist"],
+      "examples_ref": ["spec_v0.3.md:etymology"]
+    },
+    {
+      "name": "stage",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.3.0",
+      "stable_in": "1.0.0",
+      "description": "Historical stage block.",
+      "allowed_children": [],
+      "required_fields": [
+        {"name": "name", "value_kinds": ["string"], "required": true, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Stage name."}
+      ],
+      "optional_fields": [
+        {"name": "based_on", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["stage", "language"], "controlled_values": [], "notes": "Base stage or language."},
+        {"name": "period", "value_kinds": ["string", "atom", "object"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Period label or object."},
+        {"name": "phonology", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["phonology"], "controlled_values": [], "notes": "Phonology reference."},
+        {"name": "grammar", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["grammar"], "controlled_values": [], "notes": "Grammar reference."},
+        {"name": "lexicon_notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Lexicon notes."},
+        {"name": "status", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["draft", "living", "historical", "reconstructed", "deprecated"], "notes": "Stage status."},
+        {"name": "certainty", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["low", "medium", "high"], "notes": "Confidence marker."}
+      ],
+      "disallowed_fields": ["pos", "translation"],
+      "reference_fields": [
+        {"name": "based_on", "reference_targets": ["stage", "language"]},
+        {"name": "phonology", "reference_targets": ["phonology"]},
+        {"name": "grammar", "reference_targets": ["grammar"]}
+      ],
+      "validation_rules": ["name is required"],
+      "examples_ref": ["spec_v0.3.md:stage"]
+    },
+    {
+      "name": "dialect",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.4.0",
+      "stable_in": "1.0.0",
+      "description": "Dialect or named variety block.",
+      "allowed_children": [],
+      "required_fields": [
+        {"name": "name", "value_kinds": ["string"], "required": true, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Dialect name."}
+      ],
+      "optional_fields": [
+        {"name": "language", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["language"], "controlled_values": [], "notes": "Parent language."},
+        {"name": "based_on", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["dialect", "language"], "controlled_values": [], "notes": "Base dialect or language."},
+        {"name": "regions", "value_kinds": ["list"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Regional labels."},
+        {"name": "phonology", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["phonology"], "controlled_values": [], "notes": "Dialect phonology."},
+        {"name": "grammar", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["grammar"], "controlled_values": [], "notes": "Dialect grammar."},
+        {"name": "registers", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["register"], "controlled_values": [], "notes": "Available registers."},
+        {"name": "lexicon_notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Lexical notes."},
+        {"name": "status", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["draft", "living", "historical", "reconstructed", "deprecated"], "notes": "Dialect status."},
+        {"name": "certainty", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["low", "medium", "high"], "notes": "Confidence marker."}
+      ],
+      "disallowed_fields": ["pos", "translation"],
+      "reference_fields": [
+        {"name": "language", "reference_targets": ["language"]},
+        {"name": "based_on", "reference_targets": ["dialect", "language"]},
+        {"name": "phonology", "reference_targets": ["phonology"]},
+        {"name": "grammar", "reference_targets": ["grammar"]},
+        {"name": "registers", "reference_targets": ["register"]}
+      ],
+      "validation_rules": ["name is required"],
+      "examples_ref": ["spec_v0.4.md:dialect"]
+    },
+    {
+      "name": "register",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.4.0",
+      "stable_in": "1.0.0",
+      "description": "Register or usage variety block.",
+      "allowed_children": [],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "name", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Register name."},
+        {"name": "label", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Alternate label."},
+        {"name": "based_on", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["register", "language", "dialect"], "controlled_values": [], "notes": "Base register or variety."},
+        {"name": "scope", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["formal", "informal", "ritual", "literary", "colloquial"], "notes": "Register scope starter set."},
+        {"name": "social_meaning", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Social meaning."},
+        {"name": "politeness", "value_kinds": ["atom", "string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Politeness dimension."},
+        {"name": "used_in", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["language", "dialect", "entry", "construction", "text"], "controlled_values": [], "notes": "Usage contexts."},
+        {"name": "status", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["draft", "living", "historical", "reconstructed", "deprecated"], "notes": "Register status."},
+        {"name": "certainty", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["low", "medium", "high"], "notes": "Confidence marker."}
+      ],
+      "disallowed_fields": ["ipa", "translation"],
+      "reference_fields": [
+        {"name": "based_on", "reference_targets": ["register", "language", "dialect"]},
+        {"name": "used_in", "reference_targets": ["language", "dialect", "entry", "construction", "text"]}
+      ],
+      "validation_rules": ["at least one of name or label must exist"],
+      "examples_ref": ["spec_v0.4.md:register", "spec_v0.5.md:register-short-syntax"]
+    },
+    {
+      "name": "phoneme",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.4.0",
+      "stable_in": "1.0.0",
+      "description": "Phoneme inventory entry block.",
+      "allowed_children": [],
+      "required_fields": [
+        {"name": "symbol", "value_kinds": ["string", "ipa"], "required": true, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Phoneme symbol."}
+      ],
+      "optional_fields": [
+        {"name": "class", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["vowel", "consonant", "tone", "suprasegmental"], "notes": "Phoneme class starter set."},
+        {"name": "features", "value_kinds": ["list"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Feature labels."},
+        {"name": "allophones", "value_kinds": ["list"], "required": false, "repeatable": false, "reference_targets": ["phoneme"], "controlled_values": [], "notes": "Allophones as strings, IPA forms, or refs."},
+        {"name": "distribution", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Distribution summary."},
+        {"name": "phonology", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["phonology"], "controlled_values": [], "notes": "Containing phonology."}
+      ],
+      "disallowed_fields": ["translation", "pos"],
+      "reference_fields": [
+        {"name": "phonology", "reference_targets": ["phonology"]},
+        {"name": "allophones", "reference_targets": ["phoneme"]}
+      ],
+      "validation_rules": ["symbol is required"],
+      "examples_ref": ["spec_v0.4.md:phoneme", "spec_v0.5.md:phoneme-short-syntax"]
+    },
+    {
+      "name": "analysis",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.4.0",
+      "stable_in": "1.0.0",
+      "description": "Explicit analysis or interpretation block.",
+      "allowed_children": [],
+      "required_fields": [
+        {"name": "target", "value_kinds": ["reference"], "required": true, "repeatable": false, "reference_targets": ["*"], "controlled_values": [], "notes": "Target object of the analysis."}
+      ],
+      "optional_fields": [
+        {"name": "interpretation", "value_kinds": ["atom", "string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Interpretive label."},
+        {"name": "claim", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Main analytic claim."},
+        {"name": "theory", "value_kinds": ["string", "atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Theoretical frame."},
+        {"name": "competes_with", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["analysis"], "controlled_values": [], "notes": "Competing analyses."},
+        {"name": "supports", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["*"], "controlled_values": [], "notes": "Supported objects or analyses."},
+        {"name": "status", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["draft", "living", "historical", "reconstructed", "deprecated"], "notes": "Analysis status."},
+        {"name": "certainty", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["low", "medium", "high"], "notes": "Confidence marker."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": ["translation", "ipa"],
+      "reference_fields": [
+        {"name": "target", "reference_targets": ["*"]},
+        {"name": "competes_with", "reference_targets": ["analysis"]},
+        {"name": "supports", "reference_targets": ["*"]}
+      ],
+      "validation_rules": ["target is required"],
+      "examples_ref": ["spec_v0.4.md:analysis"]
+    },
+    {
+      "name": "irregularity",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.8.0",
+      "stable_in": "1.0.0",
+      "description": "General irregularity descriptor.",
+      "allowed_children": [],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "target", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["*"], "controlled_values": [], "notes": "Affected object."},
+        {"name": "type", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["suppletion", "stem_alternation", "defective", "lexicalized_exception", "analogical", "poetic", "archaism", "performance_error"], "notes": "Irregularity type."},
+        {"name": "exception_to", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["soundchange", "paradigm", "construction", "irregularity", "blocking_rule"], "controlled_values": [], "notes": "Regular expectation overridden."},
+        {"name": "overrides", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["soundchange", "paradigm", "construction", "blocking_rule"], "controlled_values": [], "notes": "Rules or structures overridden."},
+        {"name": "applies_in", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["language", "stage", "dialect", "register", "text"], "controlled_values": [], "notes": "Scope of applicability."},
+        {"name": "evidence", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["text", "example", "analysis", "entry", "morpheme"], "controlled_values": [], "notes": "Evidence references."},
+        {"name": "status", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["draft", "living", "historical", "reconstructed", "deprecated"], "notes": "Irregularity status."},
+        {"name": "certainty", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["low", "medium", "high"], "notes": "Confidence marker."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [
+        {"name": "target", "reference_targets": ["*"]},
+        {"name": "exception_to", "reference_targets": ["soundchange", "paradigm", "construction", "irregularity", "blocking_rule"]},
+        {"name": "overrides", "reference_targets": ["soundchange", "paradigm", "construction", "blocking_rule"]},
+        {"name": "applies_in", "reference_targets": ["language", "stage", "dialect", "register", "text"]},
+        {"name": "evidence", "reference_targets": ["text", "example", "analysis", "entry", "morpheme"]}
+      ],
+      "validation_rules": ["irregularity should identify a target or explicit relation to a regular expectation"],
+      "examples_ref": ["spec_v0.8.md:irregularity"]
+    },
+    {
+      "name": "exception_case",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.8.0",
+      "stable_in": "1.0.0",
+      "description": "Concrete documented exception instance.",
+      "allowed_children": [],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "target", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["*"], "controlled_values": [], "notes": "Affected object."},
+        {"name": "exception_to", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["irregularity", "soundchange", "paradigm", "construction"], "controlled_values": [], "notes": "Regular case being excepted."},
+        {"name": "evidence", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["text", "example", "analysis"], "controlled_values": [], "notes": "Supporting evidence."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [
+        {"name": "target", "reference_targets": ["*"]},
+        {"name": "exception_to", "reference_targets": ["irregularity", "soundchange", "paradigm", "construction"]},
+        {"name": "evidence", "reference_targets": ["text", "example", "analysis"]}
+      ],
+      "validation_rules": ["exception_case should identify a target and an exception relation"],
+      "examples_ref": ["spec_v0.8.md:exception_case"]
+    },
+    {
+      "name": "blocking_rule",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.8.0",
+      "stable_in": "1.0.0",
+      "description": "Rule describing blocked expected formations.",
+      "allowed_children": [],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "target", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["entry", "morpheme", "paradigm", "construction"], "controlled_values": [], "notes": "Blocked target domain."},
+        {"name": "blocked_by", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["irregularity", "construction", "paradigm", "morph_irregularity"], "controlled_values": [], "notes": "Blocking source."},
+        {"name": "applies_in", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["language", "stage", "dialect", "register"], "controlled_values": [], "notes": "Applicability scope."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [
+        {"name": "target", "reference_targets": ["entry", "morpheme", "paradigm", "construction"]},
+        {"name": "blocked_by", "reference_targets": ["irregularity", "construction", "paradigm", "morph_irregularity"]},
+        {"name": "applies_in", "reference_targets": ["language", "stage", "dialect", "register"]}
+      ],
+      "validation_rules": ["blocking_rule should specify a blocked target or explicit blocker relation"],
+      "examples_ref": ["spec_v0.8.md:blocking_rule"]
+    },
+    {
+      "name": "morph_irregularity",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.8.0",
+      "stable_in": "1.0.0",
+      "description": "Morphology-specific irregularity block.",
+      "allowed_children": [],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "target", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["entry", "morpheme"], "controlled_values": [], "notes": "Affected entry or morpheme."},
+        {"name": "type", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["suppletion", "stem_alternation", "defective", "lexicalized_exception"], "notes": "Morphological irregularity type."},
+        {"name": "exception_to", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["paradigm", "morpheme", "construction"], "controlled_values": [], "notes": "Regular structure being excepted."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [
+        {"name": "target", "reference_targets": ["entry", "morpheme"]},
+        {"name": "exception_to", "reference_targets": ["paradigm", "morpheme", "construction"]}
+      ],
+      "validation_rules": ["morph_irregularity should target entry or morpheme material"],
+      "examples_ref": ["spec_v0.8.md:morph_irregularity"]
+    },
+    {
+      "name": "paradigm_irregularity",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.8.0",
+      "stable_in": "1.0.0",
+      "description": "Paradigm-specific irregularity block.",
+      "allowed_children": [],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "target", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["paradigm"], "controlled_values": [], "notes": "Affected paradigm."},
+        {"name": "type", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["defective", "missing_cell", "overridden_cell", "irregular_stem"], "notes": "Paradigm irregularity type."},
+        {"name": "exception_to", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["paradigm"], "controlled_values": [], "notes": "Expected paradigm being excepted."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [
+        {"name": "target", "reference_targets": ["paradigm"]},
+        {"name": "exception_to", "reference_targets": ["paradigm"]}
+      ],
+      "validation_rules": ["paradigm_irregularity should target a paradigm"],
+      "examples_ref": ["spec_v0.8.md:paradigm_irregularity"]
+    },
+    {
+      "name": "soundchange_exception",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.8.0",
+      "stable_in": "1.0.0",
+      "description": "Sound-change-specific exception block.",
+      "allowed_children": [],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "target", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["entry", "morpheme", "stage"], "controlled_values": [], "notes": "Affected lexeme, morpheme, or stage."},
+        {"name": "exception_to", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["soundchange"], "controlled_values": [], "notes": "Sound change being excepted."},
+        {"name": "type", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["lexicalized_exception", "analogical", "archaism"], "notes": "Exception type."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [
+        {"name": "target", "reference_targets": ["entry", "morpheme", "stage"]},
+        {"name": "exception_to", "reference_targets": ["soundchange"]}
+      ],
+      "validation_rules": ["soundchange_exception should point to a soundchange context"],
+      "examples_ref": ["spec_v0.8.md:soundchange_exception"]
+    },
+    {
+      "name": "construction_exception",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.8.0",
+      "stable_in": "1.0.0",
+      "description": "Construction-specific exception block.",
+      "allowed_children": [],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "target", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["construction", "entry"], "controlled_values": [], "notes": "Affected construction or lexeme."},
+        {"name": "exception_to", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["construction"], "controlled_values": [], "notes": "Regular construction being excepted."},
+        {"name": "register", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["register"], "controlled_values": [], "notes": "Register-scoped exception."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [
+        {"name": "target", "reference_targets": ["construction", "entry"]},
+        {"name": "exception_to", "reference_targets": ["construction"]},
+        {"name": "register", "reference_targets": ["register"]}
+      ],
+      "validation_rules": ["construction_exception should target a constructional pattern"],
+      "examples_ref": ["spec_v0.8.md:construction_exception"]
+    },
+    {
+      "name": "text_exception",
+      "status": "core",
+      "kind": "entity",
+      "since_version": "0.8.0",
+      "stable_in": "1.0.0",
+      "description": "Text-evidence-specific exception block.",
+      "allowed_children": [],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "target", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["text", "example", "entry", "construction"], "controlled_values": [], "notes": "Affected textual or analyzed object."},
+        {"name": "type", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": ["poetic", "archaism", "performance_error"], "notes": "Text exception type."},
+        {"name": "evidence", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["text", "example", "analysis"], "controlled_values": [], "notes": "Evidence references."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [
+        {"name": "target", "reference_targets": ["text", "example", "entry", "construction"]},
+        {"name": "evidence", "reference_targets": ["text", "example", "analysis"]}
+      ],
+      "validation_rules": ["text_exception should distinguish text-bound deviation from system-wide irregularity"],
+      "examples_ref": ["spec_v0.8.md:text_exception"]
+    }
+  ]
+}

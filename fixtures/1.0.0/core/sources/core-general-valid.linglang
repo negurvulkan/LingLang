@@ -1,0 +1,52 @@
+dsl 1.0.0
+
+language taren {
+  name: "Taren"
+  native_name: "Tarén"
+  family: "Tarenic"
+  scripts: [script:tarenic]
+  dialects: [dialect:north_taren]
+}
+
+entry varu {
+  pos: verb
+  gloss: "to drink"
+  ipa: /va.ru/
+}
+
+phonology taren_core {
+  vowels: /a e i o u/
+  consonants: /p t k m n r v/
+}
+
+grammar taren_grammar {
+  categories {
+    pos: [noun, verb]
+  }
+
+  possession {
+    strategy: suffixal
+  }
+}
+
+script tarenic {
+  type: alphabet
+  direction: ltr
+}
+
+example ex1 {
+  surface: "Ka varu."
+  translation: "I drink."
+  language: language:taren
+  uses: [entry:varu]
+}
+
+text tx1 {
+  language: language:taren
+  content: "Ka varu."
+
+  segment s1 {
+    surface: "Ka varu."
+    translation: "I drink."
+  }
+}

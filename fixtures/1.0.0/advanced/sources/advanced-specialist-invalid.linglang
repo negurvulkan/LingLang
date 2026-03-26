@@ -1,0 +1,16 @@
+dsl 1.0.0
+
+sign_unit bad_sign {
+}
+
+classifier_system bad_classifier {
+}
+
+switch_reference bad_switch {
+}
+
+polysynthesis_profile bad_poly {
+}
+
+template_morphology bad_template {
+}

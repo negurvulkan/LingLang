@@ -1,0 +1,11 @@
+{
+  "name": "@linglang/studio",
+  "version": "1.0.4",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "node -e \"console.log('Studio scaffold only')\"",
+    "check": "node -e \"console.log('Studio scaffold only')\"",
+    "clean": "node -e \"console.log('Nothing to clean')\""
+  }
+}

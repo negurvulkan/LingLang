@@ -1,0 +1,105 @@
+{
+  "dsl_version": "1.0.0",
+  "table_version": "1.0.0",
+  "authority": "co-normative",
+  "layer": "conformance",
+  "generated_from": [
+    "spec_1.0.0-core.md",
+    "spec_1.0.0.md",
+    "spec_v0.5.md",
+    "ast_1.0_review.md"
+  ],
+  "conformance": {
+    "ast_node_kinds": [
+      "Document",
+      "VersionDecl",
+      "EntityBlock",
+      "SectionBlock",
+      "Field",
+      "ScalarValue",
+      "ListValue",
+      "ObjectValue",
+      "ReferenceValue",
+      "IpaValue",
+      "MultilineTextValue"
+    ],
+    "short_syntax_targets": [
+      "entry",
+      "morpheme",
+      "example",
+      "phoneme",
+      "register"
+    ],
+    "value_kinds": [
+      "string",
+      "atom",
+      "number",
+      "boolean",
+      "null",
+      "ipa",
+      "multiline",
+      "reference",
+      "reference_list",
+      "list",
+      "object"
+    ],
+    "reference_model": {
+      "form": "<type>:<id>",
+      "typed": true,
+      "requires_explicit_type": true
+    },
+    "canonical_rendering_rules": [
+      "emit dsl <version> first",
+      "render all content using canonical long syntax",
+      "preserve AST order exactly",
+      "preserve typed references in typed form",
+      "render IpaValue with slash delimiters",
+      "render MultilineTextValue with triple quotes",
+      "do not use heuristic field reordering",
+      "short-syntax sources may roundtrip into canonical long syntax"
+    ],
+    "roundtrip_expectations": [
+      "long syntax -> AST -> canonical long syntax",
+      "short syntax -> AST -> canonical long syntax",
+      "matching long and short syntax must produce the same semantic AST",
+      "section-heavy blocks must preserve child-block structure",
+      "stable-core irregularity structures must remain representable without AST rewrites"
+    ],
+    "metadata_capabilities": [
+      {
+        "name": "source_span",
+        "required_for_core_conformance": false
+      },
+      {
+        "name": "leading_comments",
+        "required_for_core_conformance": false
+      },
+      {
+        "name": "trailing_comments",
+        "required_for_core_conformance": false
+      },
+      {
+        "name": "origin",
+        "required_for_core_conformance": false,
+        "allowed_values": ["long", "short", "generated"]
+      }
+    ],
+    "conformance_levels": [
+      {
+        "name": "stable_core",
+        "description": "Implements the stable-core syntax, AST, references, short syntax targets, and stable-core block schemas."
+      },
+      {
+        "name": "full_1_0",
+        "description": "Implements the stable core plus advanced normative areas."
+      }
+    ],
+    "fixture_expectations": [
+      "one minimal valid AST example for every stable-core block type",
+      "one minimal valid schema example for every advanced block type",
+      "one fixture for each value kind",
+      "negative short-syntax fixtures for missing required payload or ambiguity",
+      "fixtures for comment and source-span preservation when metadata is supported"
+    ]
+  }
+}

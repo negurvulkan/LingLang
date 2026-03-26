@@ -1,0 +1,6 @@
+{
+  "expected_status": "core",
+  "expected_valid": true,
+  "expected_blocks": ["dialect", "register", "phoneme", "analysis"],
+  "expected_warning_codes": ["reference.unresolved"]
+}

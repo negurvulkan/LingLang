@@ -1,0 +1,25 @@
+{
+  "name": "@linglang/language-service",
+  "version": "1.0.4",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@linglang/core": "1.0.4",
+    "@linglang/query": "1.0.4"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "clean": "if exist dist rmdir /s /q dist"
+  }
+}

@@ -1,0 +1,7 @@
+dsl 1.0.0
+
+varu %verb ?to_drink $/va.ru/
+-ren %suffix ?POSS
+ex1 ?Ka_varu. => ?I_drink.
+p $/p/ %consonant
+formal_register ?Formal %formal

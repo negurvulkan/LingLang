@@ -1,0 +1,5 @@
+{
+  "expected_status": "advanced",
+  "expected_valid": true,
+  "expected_blocks": ["sign_unit", "classifier_system", "switch_reference", "polysynthesis_profile", "template_morphology"]
+}

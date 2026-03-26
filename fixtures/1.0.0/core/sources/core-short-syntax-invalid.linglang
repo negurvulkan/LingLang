@@ -1,0 +1,5 @@
+dsl 1.0.0
+
+varu ?to_drink =go
+ex1 ?Ka_varu.
+p %consonant

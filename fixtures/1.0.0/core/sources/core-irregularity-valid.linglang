@@ -1,0 +1,49 @@
+dsl 1.0.0
+
+irregularity irr1 {
+  target: entry:go
+  type: suppletion
+  exception_to: paradigm:verb_present
+}
+
+exception_case exc1 {
+  target: entry:go
+  exception_to: irregularity:irr1
+  evidence: [example:ex1]
+}
+
+blocking_rule br1 {
+  target: construction:agentive
+  blocked_by: irregularity:irr1
+  applies_in: [language:taren]
+}
+
+morph_irregularity mi1 {
+  target: entry:go
+  type: suppletion
+  exception_to: paradigm:verb_present
+}
+
+paradigm_irregularity pi1 {
+  target: paradigm:verb_present
+  type: defective
+  exception_to: paradigm:verb_present
+}
+
+soundchange_exception se1 {
+  target: entry:go
+  exception_to: soundchange:proto_to_old
+  type: analogical
+}
+
+construction_exception ce1 {
+  target: construction:possessive_suffix
+  exception_to: construction:possessive_suffix
+  register: register:formal_register
+}
+
+text_exception te1 {
+  target: text:tx1
+  type: poetic
+  evidence: [analysis:a1]
+}

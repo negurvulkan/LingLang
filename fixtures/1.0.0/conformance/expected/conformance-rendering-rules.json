@@ -1,0 +1,4 @@
+{
+  "expected_valid": true,
+  "expected_conformance_subjects": ["canonical_rendering_rules", "roundtrip_expectations"]
+}

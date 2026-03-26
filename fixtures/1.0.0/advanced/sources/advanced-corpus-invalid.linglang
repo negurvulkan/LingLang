@@ -1,0 +1,7 @@
+dsl 1.0.0
+
+annotation_layer bad_layer {
+}
+
+corpus_view bad_view {
+}

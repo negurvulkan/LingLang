@@ -1,0 +1,296 @@
+{
+  "dsl_version": "1.0.0",
+  "table_version": "1.0.0",
+  "authority": "co-normative",
+  "layer": "advanced",
+  "generated_from": [
+    "spec_1.0.0.md",
+    "spec_v0.7.md",
+    "spec_v0.9.md"
+  ],
+  "blocks": [
+    {
+      "name": "annotation_layer",
+      "status": "advanced",
+      "kind": "entity",
+      "since_version": "0.7.0",
+      "stable_in": null,
+      "compatibility_note": "Not covered by the stable-core compatibility guarantee.",
+      "description": "Structured annotation layer for texts, examples, and analyses.",
+      "allowed_children": ["annotation"],
+      "required_fields": [{"name": "kind", "value_kinds": ["atom"], "required": true, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Annotation layer kind."}],
+      "optional_fields": [
+        {"name": "label", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Human-readable label."},
+        {"name": "description", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Layer description."},
+        {"name": "targets", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["text", "example", "analysis"], "controlled_values": [], "notes": "Primary layer targets."},
+        {"name": "applies_to", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["text", "example"], "controlled_values": [], "notes": "Applies-to anchors."},
+        {"name": "schema_notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Schema notes."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [{"name": "targets", "reference_targets": ["text", "example", "analysis"]}, {"name": "applies_to", "reference_targets": ["text", "example"]}, {"name": "annotation.*.analysis", "reference_targets": ["analysis"]}],
+      "validation_rules": ["kind is required", "annotation anchors should resolve to explicit segment or target locations"],
+      "examples_ref": ["spec_v0.7.md:annotation_layer", "spec_v0.9.md:text-and-annotation"]
+    },
+    {
+      "name": "corpus_view",
+      "status": "advanced",
+      "kind": "entity",
+      "since_version": "0.7.0",
+      "stable_in": null,
+      "compatibility_note": "Not covered by the stable-core compatibility guarantee.",
+      "description": "Grouped corpus-oriented perspective across texts and annotation layers.",
+      "allowed_children": [],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "label", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Human-readable label."},
+        {"name": "texts", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["text"], "controlled_values": [], "notes": "Texts included in the view."},
+        {"name": "layers", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["annotation_layer"], "controlled_values": [], "notes": "Layers included in the view."},
+        {"name": "focus", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Corpus focus."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [{"name": "texts", "reference_targets": ["text"]}, {"name": "layers", "reference_targets": ["annotation_layer"]}],
+      "validation_rules": ["at least one of texts or layers must exist"],
+      "examples_ref": ["spec_v0.7.md:corpus_view"]
+    },
+    {
+      "name": "sign_unit",
+      "status": "advanced",
+      "kind": "entity",
+      "since_version": "0.7.0",
+      "stable_in": null,
+      "compatibility_note": "Not covered by the stable-core compatibility guarantee.",
+      "description": "Sign-language-oriented lexical or structural sign unit.",
+      "allowed_children": [],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "entry", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["entry"], "controlled_values": [], "notes": "Linked lexical entry."},
+        {"name": "handshape", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Handshape description."},
+        {"name": "movement", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Movement description."},
+        {"name": "location", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Location description."},
+        {"name": "orientation", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Orientation description."},
+        {"name": "nonmanuals", "value_kinds": ["list"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Legacy simple nonmanual list."},
+        {"name": "nonmanual_profile", "value_kinds": ["string", "object"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Preferred structured nonmanual profile."},
+        {"name": "simultaneous", "value_kinds": ["list"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Simultaneous components."},
+        {"name": "spatial_anchor", "value_kinds": ["string", "object"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Spatial anchoring."},
+        {"name": "modification", "value_kinds": ["string", "object"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Iconic or morphological modification."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [{"name": "entry", "reference_targets": ["entry"]}],
+      "validation_rules": ["at least one of handshape, movement, location, nonmanual_profile, or spatial_anchor should exist", "simultaneous, if present, must not be empty"],
+      "examples_ref": ["spec_v0.7.md:sign_unit", "spec_v0.9.md:sign_unit"]
+    },
+    {
+      "name": "classifier_system",
+      "status": "advanced",
+      "kind": "entity",
+      "since_version": "0.7.0",
+      "stable_in": null,
+      "compatibility_note": "Not covered by the stable-core compatibility guarantee.",
+      "description": "Classifier system profile.",
+      "allowed_children": [],
+      "required_fields": [{"name": "kind", "value_kinds": ["atom"], "required": true, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Classifier system kind."}],
+      "optional_fields": [
+        {"name": "inventory", "value_kinds": ["list"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Classifier inventory."},
+        {"name": "used_in", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["grammar", "entry", "construction", "text"], "controlled_values": [], "notes": "Usage contexts."},
+        {"name": "conditions", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Distributional conditions."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [{"name": "used_in", "reference_targets": ["grammar", "entry", "construction", "text"]}],
+      "validation_rules": ["kind is required"],
+      "examples_ref": ["spec_v0.7.md:classifier_system", "spec_v0.9.md:classifier-system"]
+    },
+    {
+      "name": "switch_reference",
+      "status": "advanced",
+      "kind": "entity",
+      "since_version": "0.7.0",
+      "stable_in": null,
+      "compatibility_note": "Not covered by the stable-core compatibility guarantee.",
+      "description": "Switch-reference profile.",
+      "allowed_children": [],
+      "required_fields": [{"name": "kind", "value_kinds": ["atom"], "required": true, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Switch-reference kind."}],
+      "optional_fields": [
+        {"name": "marker", "value_kinds": ["string", "atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Marker form."},
+        {"name": "used_in", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["construction", "grammar", "text"], "controlled_values": [], "notes": "Usage contexts."},
+        {"name": "conditions", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Usage conditions."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [{"name": "used_in", "reference_targets": ["construction", "grammar", "text"]}],
+      "validation_rules": ["kind is required"],
+      "examples_ref": ["spec_v0.7.md:switch_reference", "spec_v0.9.md:switch-reference"]
+    },
+    {
+      "name": "polysynthesis_profile",
+      "status": "advanced",
+      "kind": "entity",
+      "since_version": "0.7.0",
+      "stable_in": null,
+      "compatibility_note": "Not covered by the stable-core compatibility guarantee.",
+      "description": "Polysynthesis profile.",
+      "allowed_children": [],
+      "required_fields": [{"name": "kind", "value_kinds": ["atom"], "required": true, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Polysynthesis profile kind."}],
+      "optional_fields": [
+        {"name": "features", "value_kinds": ["list"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Feature labels."},
+        {"name": "used_in", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["grammar", "construction"], "controlled_values": [], "notes": "Usage contexts."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [{"name": "used_in", "reference_targets": ["grammar", "construction"]}],
+      "validation_rules": ["kind is required"],
+      "examples_ref": ["spec_v0.7.md:polysynthesis_profile", "spec_v0.9.md:polysynthesis-profile"]
+    },
+    {
+      "name": "template_morphology",
+      "status": "advanced",
+      "kind": "entity",
+      "since_version": "0.7.0",
+      "stable_in": null,
+      "compatibility_note": "Not covered by the stable-core compatibility guarantee.",
+      "description": "Template morphology or root-and-pattern profile.",
+      "allowed_children": [],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "root_pattern", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Root pattern."},
+        {"name": "template", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Template form."},
+        {"name": "melody", "value_kinds": ["string", "list"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Melodic pattern."},
+        {"name": "used_in", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["grammar", "entry", "morpheme"], "controlled_values": [], "notes": "Usage contexts."},
+        {"name": "notes", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Supplementary notes."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [{"name": "used_in", "reference_targets": ["grammar", "entry", "morpheme"]}],
+      "validation_rules": ["at least one of root_pattern or template should exist"],
+      "examples_ref": ["spec_v0.7.md:template_morphology", "spec_v0.9.md:template-morphology"]
+    },
+    {
+      "name": "semantic_domain",
+      "status": "advanced",
+      "kind": "entity",
+      "since_version": "0.7.0",
+      "stable_in": null,
+      "compatibility_note": "Not covered by the stable-core compatibility guarantee.",
+      "description": "Semantic domain hierarchy block.",
+      "allowed_children": [],
+      "required_fields": [{"name": "name", "value_kinds": ["string"], "required": true, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Domain name."}],
+      "optional_fields": [
+        {"name": "parent", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["semantic_domain"], "controlled_values": [], "notes": "Parent domain."},
+        {"name": "description", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Description."},
+        {"name": "tags", "value_kinds": ["list"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Tag labels."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [{"name": "parent", "reference_targets": ["semantic_domain"]}],
+      "validation_rules": ["name is required"],
+      "examples_ref": ["spec_v0.7.md:semantic_domain"]
+    },
+    {
+      "name": "sense",
+      "status": "advanced",
+      "kind": "entity",
+      "since_version": "0.7.0",
+      "stable_in": null,
+      "compatibility_note": "Not covered by the stable-core compatibility guarantee.",
+      "description": "Lexical sense block.",
+      "allowed_children": [],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "entry", "value_kinds": ["reference"], "required": false, "repeatable": false, "reference_targets": ["entry"], "controlled_values": [], "notes": "Owning entry."},
+        {"name": "gloss", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Sense gloss."},
+        {"name": "definition", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Sense definition."},
+        {"name": "domains", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["semantic_domain"], "controlled_values": [], "notes": "Semantic domains."},
+        {"name": "deixis", "value_kinds": ["atom", "string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Deictic profile."},
+        {"name": "modal", "value_kinds": ["atom", "string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Modal profile."},
+        {"name": "evidentiality", "value_kinds": ["atom", "string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Evidential profile."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [{"name": "entry", "reference_targets": ["entry"]}, {"name": "domains", "reference_targets": ["semantic_domain"]}],
+      "validation_rules": ["at least one of gloss or definition should exist"],
+      "examples_ref": ["spec_v0.7.md:sense"]
+    },
+    {
+      "name": "semantic_role",
+      "status": "advanced",
+      "kind": "entity",
+      "since_version": "0.7.0",
+      "stable_in": null,
+      "compatibility_note": "Not covered by the stable-core compatibility guarantee.",
+      "description": "Semantic role block.",
+      "allowed_children": [],
+      "required_fields": [{"name": "kind", "value_kinds": ["atom"], "required": true, "repeatable": false, "reference_targets": [], "controlled_values": ["agent", "patient", "theme", "experiencer", "goal", "source"], "notes": "Semantic role kind starter set."}],
+      "optional_fields": [
+        {"name": "label", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Human-readable label."},
+        {"name": "description", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Role description."},
+        {"name": "used_in", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["entry", "construction", "analysis"], "controlled_values": [], "notes": "Usage contexts."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [{"name": "used_in", "reference_targets": ["entry", "construction", "analysis"]}],
+      "validation_rules": ["kind is required"],
+      "examples_ref": ["spec_v0.7.md:semantic_role"]
+    },
+    {
+      "name": "pragmatic_profile",
+      "status": "advanced",
+      "kind": "entity",
+      "since_version": "0.7.0",
+      "stable_in": null,
+      "compatibility_note": "Not covered by the stable-core compatibility guarantee.",
+      "description": "Pragmatic and sociolinguistic profile block.",
+      "allowed_children": [],
+      "required_fields": [{"name": "kind", "value_kinds": ["atom"], "required": true, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Pragmatic profile kind."}],
+      "optional_fields": [
+        {"name": "label", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Human-readable label."},
+        {"name": "description", "value_kinds": ["string", "multiline"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Profile description."},
+        {"name": "used_by", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["register", "dialect", "entry", "construction", "text"], "controlled_values": [], "notes": "Usage contexts."},
+        {"name": "politeness", "value_kinds": ["atom", "string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Politeness profile."},
+        {"name": "taboo_level", "value_kinds": ["atom", "string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Taboo level."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [{"name": "used_by", "reference_targets": ["register", "dialect", "entry", "construction", "text"]}],
+      "validation_rules": ["kind is required"],
+      "examples_ref": ["spec_v0.7.md:pragmatic_profile"]
+    },
+    {
+      "name": "prosody",
+      "status": "advanced",
+      "kind": "entity",
+      "since_version": "0.7.0",
+      "stable_in": null,
+      "compatibility_note": "Not covered by the stable-core compatibility guarantee.",
+      "description": "Structured prosodic profile block.",
+      "allowed_children": [],
+      "required_fields": [],
+      "optional_fields": [
+        {"name": "kind", "value_kinds": ["atom"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Prosodic kind."},
+        {"name": "pattern", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Prosodic pattern."},
+        {"name": "stress_rule", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Stress rule."},
+        {"name": "tone_pattern", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Tone pattern."},
+        {"name": "intonation_pattern", "value_kinds": ["string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Intonation pattern."},
+        {"name": "domain", "value_kinds": ["atom", "string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Prosodic domain."},
+        {"name": "unit", "value_kinds": ["atom", "string"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Carrier unit."},
+        {"name": "association", "value_kinds": ["string", "object"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Associative structure."},
+        {"name": "hierarchy", "value_kinds": ["list", "object"], "required": false, "repeatable": false, "reference_targets": [], "controlled_values": [], "notes": "Prosodic hierarchy."},
+        {"name": "applies_to", "value_kinds": ["reference_list"], "required": false, "repeatable": false, "reference_targets": ["phonology", "text", "stage", "language"], "controlled_values": [], "notes": "Targets of the prosodic profile."}
+      ],
+      "disallowed_fields": [],
+      "reference_fields": [{"name": "applies_to", "reference_targets": ["phonology", "text", "stage", "language"]}],
+      "validation_rules": ["at least one of kind or pattern should exist", "association or hierarchy should not appear without applies_to"],
+      "examples_ref": ["spec_v0.7.md:prosody", "spec_v0.9.md:prosody"]
+    }
+  ],
+  "advanced_zones": [
+    {
+      "name": "advanced_pragmatics_baseline",
+      "status": "advanced",
+      "compatibility_note": "Not covered by the stable-core compatibility guarantee.",
+      "description": "Open-ended advanced pragmatics beyond the stable general baseline."
+    },
+    {
+      "name": "advanced_prosodic_extensions",
+      "status": "advanced",
+      "compatibility_note": "Not covered by the stable-core compatibility guarantee.",
+      "description": "Highly specialized prosodic extensions beyond the stable baseline."
+    }
+  ]
+}

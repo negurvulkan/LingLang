@@ -1,0 +1,5 @@
+{
+  "expected_valid": true,
+  "expected_conformance_subjects": ["fixture_expectations"],
+  "expected_blocks": ["annotation_layer", "corpus_view", "sign_unit", "classifier_system", "switch_reference", "polysynthesis_profile", "template_morphology", "semantic_domain", "sense", "semantic_role", "pragmatic_profile", "prosody"]
+}

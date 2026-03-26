@@ -1,0 +1,25 @@
+dsl 1.0.0
+
+irregularity bad_irr {
+}
+
+exception_case bad_exc {
+}
+
+blocking_rule bad_br {
+}
+
+morph_irregularity bad_mi {
+}
+
+paradigm_irregularity bad_pi {
+}
+
+soundchange_exception bad_se {
+}
+
+construction_exception bad_ce {
+}
+
+text_exception bad_te {
+}

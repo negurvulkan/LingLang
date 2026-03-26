@@ -1,0 +1,107 @@
+{
+  "dsl_version": "1.0.0",
+  "fixture_set_version": "1.0.0",
+  "scope": "core",
+  "fixtures": [
+    {
+      "id": "core-general-valid",
+      "status": "core",
+      "category": "schema-valid",
+      "input": "sources/core-general-valid.linglang",
+      "expected": "expected/core-general-valid.json",
+      "blocks_covered": ["language", "entry", "phonology", "grammar", "script", "example", "text"],
+      "assertions": ["expected_valid", "expected_blocks"],
+      "notes": "General stable-core descriptive blocks."
+    },
+    {
+      "id": "core-general-invalid",
+      "status": "core",
+      "category": "schema-invalid",
+      "input": "sources/core-general-invalid.linglang",
+      "expected": "expected/core-general-invalid.json",
+      "blocks_covered": ["language", "entry", "phonology", "grammar", "script", "example", "text"],
+      "assertions": ["expected_valid", "expected_required_missing"],
+      "notes": "Required-field and duplicate-anchor failures."
+    },
+    {
+      "id": "core-morph-valid",
+      "status": "core",
+      "category": "schema-valid",
+      "input": "sources/core-morph-valid.linglang",
+      "expected": "expected/core-morph-valid.json",
+      "blocks_covered": ["morpheme", "paradigm", "construction", "soundchange", "etymology", "stage"],
+      "assertions": ["expected_valid", "expected_blocks"],
+      "notes": "Morphology and diachrony baseline."
+    },
+    {
+      "id": "core-morph-invalid",
+      "status": "core",
+      "category": "schema-invalid",
+      "input": "sources/core-morph-invalid.linglang",
+      "expected": "expected/core-morph-invalid.json",
+      "blocks_covered": ["morpheme", "paradigm", "construction", "soundchange", "etymology", "stage"],
+      "assertions": ["expected_valid", "expected_required_missing"],
+      "notes": "Missing required structure across morph and diachrony blocks."
+    },
+    {
+      "id": "core-variation-valid",
+      "status": "core",
+      "category": "schema-valid",
+      "input": "sources/core-variation-valid.linglang",
+      "expected": "expected/core-variation-valid.json",
+      "blocks_covered": ["dialect", "register", "phoneme", "analysis"],
+      "assertions": ["expected_valid", "expected_blocks"],
+      "notes": "Variation and analysis baseline."
+    },
+    {
+      "id": "core-variation-invalid",
+      "status": "core",
+      "category": "schema-invalid",
+      "input": "sources/core-variation-invalid.linglang",
+      "expected": "expected/core-variation-invalid.json",
+      "blocks_covered": ["dialect", "register", "phoneme", "analysis"],
+      "assertions": ["expected_valid", "expected_required_missing"],
+      "notes": "Missing required fields across variation and analysis blocks."
+    },
+    {
+      "id": "core-irregularity-valid",
+      "status": "core",
+      "category": "schema-valid",
+      "input": "sources/core-irregularity-valid.linglang",
+      "expected": "expected/core-irregularity-valid.json",
+      "blocks_covered": ["irregularity", "exception_case", "blocking_rule", "morph_irregularity", "paradigm_irregularity", "soundchange_exception", "construction_exception", "text_exception"],
+      "assertions": ["expected_valid", "expected_blocks"],
+      "notes": "Irregularity framework coverage."
+    },
+    {
+      "id": "core-irregularity-invalid",
+      "status": "core",
+      "category": "schema-invalid",
+      "input": "sources/core-irregularity-invalid.linglang",
+      "expected": "expected/core-irregularity-invalid.json",
+      "blocks_covered": ["irregularity", "exception_case", "blocking_rule", "morph_irregularity", "paradigm_irregularity", "soundchange_exception", "construction_exception", "text_exception"],
+      "assertions": ["expected_valid"],
+      "notes": "Underspecified exception framework shapes."
+    },
+    {
+      "id": "core-short-syntax-valid",
+      "status": "core",
+      "category": "short-syntax-valid",
+      "input": "sources/core-short-syntax-valid.linglang",
+      "expected": "expected/core-short-syntax-valid.json",
+      "blocks_covered": ["entry", "morpheme", "example", "phoneme", "register"],
+      "assertions": ["expected_short_syntax_target"],
+      "notes": "Supported short-syntax targets."
+    },
+    {
+      "id": "core-short-syntax-invalid",
+      "status": "core",
+      "category": "short-syntax-invalid",
+      "input": "sources/core-short-syntax-invalid.linglang",
+      "expected": "expected/core-short-syntax-invalid.json",
+      "blocks_covered": ["entry", "example", "phoneme"],
+      "assertions": ["expected_valid", "expected_short_syntax_target"],
+      "notes": "Invalid short-syntax shapes."
+    }
+  ]
+}

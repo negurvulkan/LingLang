@@ -1,0 +1,21 @@
+dsl 1.0.0
+
+morpheme bad_morph {
+}
+
+paradigm bad_paradigm {
+}
+
+construction bad_construction {
+}
+
+stage bad_stage {
+  period: old
+}
+
+soundchange bad_change {
+  from_stage: stage:proto_taren
+}
+
+etymology bad_et {
+}

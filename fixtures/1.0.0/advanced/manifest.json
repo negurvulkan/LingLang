@@ -1,0 +1,67 @@
+{
+  "dsl_version": "1.0.0",
+  "fixture_set_version": "1.0.0",
+  "scope": "advanced",
+  "fixtures": [
+    {
+      "id": "advanced-semantics-valid",
+      "status": "advanced",
+      "category": "schema-valid",
+      "input": "sources/advanced-semantics-valid.linglang",
+      "expected": "expected/advanced-semantics-valid.json",
+      "blocks_covered": ["semantic_domain", "sense", "semantic_role", "pragmatic_profile", "prosody"],
+      "assertions": ["expected_valid", "expected_blocks"],
+      "notes": "Semantic, pragmatic, and prosodic advanced blocks."
+    },
+    {
+      "id": "advanced-semantics-invalid",
+      "status": "advanced",
+      "category": "schema-invalid",
+      "input": "sources/advanced-semantics-invalid.linglang",
+      "expected": "expected/advanced-semantics-invalid.json",
+      "blocks_covered": ["semantic_domain", "sense", "semantic_role", "pragmatic_profile", "prosody"],
+      "assertions": ["expected_valid", "expected_required_missing"],
+      "notes": "Missing required content in semantic and pragmatic blocks."
+    },
+    {
+      "id": "advanced-corpus-valid",
+      "status": "advanced",
+      "category": "schema-valid",
+      "input": "sources/advanced-corpus-valid.linglang",
+      "expected": "expected/advanced-corpus-valid.json",
+      "blocks_covered": ["annotation_layer", "corpus_view"],
+      "assertions": ["expected_valid", "expected_blocks"],
+      "notes": "Corpus and annotation coverage."
+    },
+    {
+      "id": "advanced-corpus-invalid",
+      "status": "advanced",
+      "category": "schema-invalid",
+      "input": "sources/advanced-corpus-invalid.linglang",
+      "expected": "expected/advanced-corpus-invalid.json",
+      "blocks_covered": ["annotation_layer", "corpus_view"],
+      "assertions": ["expected_valid", "expected_required_missing"],
+      "notes": "Underspecified corpus and annotation shapes."
+    },
+    {
+      "id": "advanced-specialist-valid",
+      "status": "advanced",
+      "category": "schema-valid",
+      "input": "sources/advanced-specialist-valid.linglang",
+      "expected": "expected/advanced-specialist-valid.json",
+      "blocks_covered": ["sign_unit", "classifier_system", "switch_reference", "polysynthesis_profile", "template_morphology"],
+      "assertions": ["expected_valid", "expected_blocks"],
+      "notes": "Specialist structural profiles."
+    },
+    {
+      "id": "advanced-specialist-invalid",
+      "status": "advanced",
+      "category": "schema-invalid",
+      "input": "sources/advanced-specialist-invalid.linglang",
+      "expected": "expected/advanced-specialist-invalid.json",
+      "blocks_covered": ["sign_unit", "classifier_system", "switch_reference", "polysynthesis_profile", "template_morphology"],
+      "assertions": ["expected_valid", "expected_required_missing"],
+      "notes": "Underspecified specialist profiles."
+    }
+  ]
+}

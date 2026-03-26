@@ -1,0 +1,24 @@
+dsl 1.0.0
+
+dialect north_taren {
+  name: "North Taren"
+  language: language:taren
+}
+
+register formal_register {
+  name: "Formal"
+  scope: formal
+  used_in: [language:taren]
+}
+
+phoneme p {
+  symbol: /p/
+  class: consonant
+  phonology: phonology:taren_core
+}
+
+analysis a1 {
+  target: entry:varu
+  interpretation: verb
+  claim: "Treat as a basic lexical verb."
+}

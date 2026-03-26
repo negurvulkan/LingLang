@@ -1,0 +1,6 @@
+{
+  "expected_status": "advanced",
+  "expected_valid": false,
+  "expected_blocks": ["semantic_domain", "sense", "semantic_role", "pragmatic_profile", "prosody"],
+  "expected_required_missing": ["semantic_domain.name", "sense.gloss_or_definition", "semantic_role.kind", "pragmatic_profile.kind", "prosody.kind_or_pattern"]
+}

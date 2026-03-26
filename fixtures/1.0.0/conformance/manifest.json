@@ -1,0 +1,61 @@
+{
+  "dsl_version": "1.0.0",
+  "fixture_set_version": "1.0.0",
+  "scope": "conformance",
+  "fixtures": [
+    {
+      "id": "conformance-ast-inventory",
+      "status": "conformance",
+      "category": "ast-shape",
+      "input": "../../../schemas/1.0.0/conformance.schema-tables.json",
+      "expected": "expected/conformance-ast-inventory.json",
+      "assertions": ["expected_ast_nodes", "expected_conformance_subjects"],
+      "notes": "AST node-kind inventory."
+    },
+    {
+      "id": "conformance-short-syntax-targets",
+      "status": "conformance",
+      "category": "short-syntax-valid",
+      "input": "../../../schemas/1.0.0/conformance.schema-tables.json",
+      "expected": "expected/conformance-short-syntax-targets.json",
+      "assertions": ["expected_short_syntax_target", "expected_conformance_subjects"],
+      "notes": "Short-syntax targets."
+    },
+    {
+      "id": "conformance-metadata-capabilities",
+      "status": "conformance",
+      "category": "metadata-capability",
+      "input": "../../../schemas/1.0.0/conformance.schema-tables.json",
+      "expected": "expected/conformance-metadata-capabilities.json",
+      "assertions": ["expected_metadata_optional", "expected_conformance_subjects"],
+      "notes": "Optional metadata capability expectations."
+    },
+    {
+      "id": "conformance-rendering-rules",
+      "status": "conformance",
+      "category": "roundtrip-expectation",
+      "input": "../../../schemas/1.0.0/conformance.schema-tables.json",
+      "expected": "expected/conformance-rendering-rules.json",
+      "assertions": ["expected_conformance_subjects"],
+      "notes": "Canonical rendering and roundtrip expectations."
+    },
+    {
+      "id": "conformance-doc-json-core",
+      "status": "conformance",
+      "category": "doc-json-consistency",
+      "input": "../../../schemas/1.0.0/core.schema-tables.json",
+      "expected": "expected/conformance-doc-json-core.json",
+      "assertions": ["expected_blocks", "expected_conformance_subjects"],
+      "notes": "Stable-core doc-vs-JSON alignment target."
+    },
+    {
+      "id": "conformance-doc-json-advanced",
+      "status": "conformance",
+      "category": "doc-json-consistency",
+      "input": "../../../schemas/1.0.0/advanced.schema-tables.json",
+      "expected": "expected/conformance-doc-json-advanced.json",
+      "assertions": ["expected_blocks", "expected_conformance_subjects"],
+      "notes": "Advanced doc-vs-JSON alignment target."
+    }
+  ]
+}

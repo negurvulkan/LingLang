@@ -1,0 +1,29 @@
+dsl 1.0.0
+
+semantic_domain motion {
+  name: "Motion"
+}
+
+sense go_sense {
+  entry: entry:go
+  gloss: "to go"
+  domains: [semantic_domain:motion]
+}
+
+semantic_role agent_role {
+  kind: agent
+  used_in: [construction:transitive_clause]
+}
+
+pragmatic_profile honorific_profile {
+  kind: honorific
+  used_by: [register:formal_register]
+  politeness: high
+}
+
+prosody taren_prosody {
+  kind: stress
+  domain: word
+  unit: syllable
+  applies_to: [phonology:taren_core]
+}

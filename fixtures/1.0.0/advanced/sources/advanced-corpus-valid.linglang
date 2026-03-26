@@ -1,0 +1,17 @@
+dsl 1.0.0
+
+annotation_layer morph_layer {
+  kind: morphology
+  targets: [text:tx1]
+
+  annotation ann1 {
+    anchor: "s1"
+    label: "1SG"
+  }
+}
+
+corpus_view view1 {
+  texts: [text:tx1]
+  layers: [annotation_layer:morph_layer]
+  focus: "Small demo corpus"
+}

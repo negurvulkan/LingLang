@@ -1,0 +1,6 @@
+{
+  "expected_status": "advanced",
+  "expected_valid": true,
+  "expected_blocks": ["annotation_layer", "corpus_view"],
+  "expected_warning_codes": ["reference.unresolved"]
+}

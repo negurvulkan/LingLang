@@ -1,0 +1,7 @@
+{
+  "expected_status": "advanced",
+  "expected_valid": false,
+  "expected_blocks": ["sign_unit", "classifier_system", "switch_reference", "polysynthesis_profile", "template_morphology"],
+  "expected_required_missing": ["sign_unit.core_sign_structure", "classifier_system.kind", "switch_reference.kind", "polysynthesis_profile.kind", "template_morphology.root_pattern_or_template"],
+  "expected_error_codes": ["schema.required_missing"]
+}

@@ -1,0 +1,5 @@
+{
+  "expected_status": "core",
+  "expected_valid": true,
+  "expected_blocks": ["irregularity", "exception_case", "blocking_rule", "morph_irregularity", "paradigm_irregularity", "soundchange_exception", "construction_exception", "text_exception"]
+}

@@ -1,0 +1,14 @@
+dsl 1.0.0
+
+dialect bad_dialect {
+}
+
+register bad_register {
+}
+
+phoneme bad_phoneme {
+}
+
+analysis bad_analysis {
+  interpretation: suffix
+}

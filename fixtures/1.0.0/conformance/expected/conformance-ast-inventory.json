@@ -1,0 +1,5 @@
+{
+  "expected_valid": true,
+  "expected_conformance_subjects": ["ast_node_kinds"],
+  "expected_ast_nodes": ["Document", "VersionDecl", "EntityBlock", "SectionBlock", "Field", "ScalarValue", "ListValue", "ObjectValue", "ReferenceValue", "IpaValue", "MultilineTextValue"]
+}

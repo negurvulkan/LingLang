@@ -1,0 +1,5 @@
+{
+  "expected_valid": true,
+  "expected_conformance_subjects": ["short_syntax_targets"],
+  "expected_short_syntax_target": ["entry", "morpheme", "example", "phoneme", "register"]
+}

@@ -1,0 +1,35 @@
+dsl 1.0.0
+
+language broken_language {
+  family: "Unknown"
+}
+
+entry broken_entry {
+  ipa: /ba.d/
+}
+
+phonology broken_phonology {
+  stress: final
+}
+
+grammar broken_grammar {
+  notes: "No categories or strategies."
+}
+
+script broken_script {
+  direction: ltr
+}
+
+example broken_example {
+  surface: "Ka varu."
+}
+
+text broken_text {
+  segment s1 {
+    surface: "A"
+  }
+
+  segment s1 {
+    surface: "B"
+  }
+}

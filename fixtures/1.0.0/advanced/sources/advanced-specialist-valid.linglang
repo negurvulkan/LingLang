@@ -1,0 +1,26 @@
+dsl 1.0.0
+
+sign_unit greet_sign {
+  handshape: "flat-B"
+  nonmanual_profile: "brow raise"
+}
+
+classifier_system noun_classifiers {
+  kind: numeral
+  used_in: [grammar:taren_grammar]
+}
+
+switch_reference sr1 {
+  kind: same_subject
+  used_in: [construction:clause_chain]
+}
+
+polysynthesis_profile poly1 {
+  kind: moderate
+  used_in: [grammar:taren_grammar]
+}
+
+template_morphology templ1 {
+  template: "CVCVC"
+  used_in: [grammar:taren_grammar]
+}

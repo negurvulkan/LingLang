@@ -1,0 +1,7 @@
+{
+  "expected_status": "core",
+  "expected_valid": false,
+  "expected_blocks": ["irregularity", "exception_case", "blocking_rule", "morph_irregularity", "paradigm_irregularity", "soundchange_exception", "construction_exception", "text_exception"],
+  "expected_required_missing": ["underspecified_irregularity_relations"],
+  "expected_error_codes": ["schema.required_missing"]
+}

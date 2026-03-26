@@ -1,0 +1,11 @@
+{
+  "name": "@linglang/playground",
+  "version": "1.0.5",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "node --check app.js",
+    "check": "node --check app.js",
+    "clean": "node -e \"console.log('Nothing to clean')\""
+  }
+}
