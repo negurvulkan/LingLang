@@ -2,6 +2,131 @@
 
 LingLang is a project for designing a general linguistic DSL for describing languages, language stages, dialects, lexica, phonologies, scripts, grammar, examples, and historical developments in a way that is both pleasant to write and reliable to process.
 
+Hier ist ein kompakter, README-tauglicher Abschnitt für **Beispiel + Abdeckung**, der stilistisch zu deinem bestehenden Text passt und direkt integrierbar ist.
+
+## Example
+
+A minimal LingLang document describing a small fragment of a language:
+
+```txt
+dsl 1.0.0
+
+language example_lang {
+  name: "Example Language"
+  family: "Constructed"
+  status: draft
+  scripts: [script:latin]
+}
+
+phonology core {
+  vowels: "/a e i o u/"
+  consonants: "/p t k m n s l r/"
+  syllable: "(C)V(C)"
+}
+
+entry varu {
+  pos: verb
+  gloss: "to drink"
+  ipa: /va.ru/
+}
+
+entry tiral {
+  pos: noun
+  gloss: "water"
+  ipa: /ti.ral/
+}
+
+example ex1 {
+  surface: "Varu tiral."
+  morph: "varu | tiral"
+  gloss: "drink | water"
+  translation: "Drink water."
+  uses: [entry:varu, entry:tiral]
+}
+```
+
+This example already demonstrates several core principles:
+
+* human-readable source
+* structured blocks with typed fields
+* typed references between objects (`entry:varu`)
+* separation of phonology, lexicon, and usage examples
+* renderability into glossed examples and dictionary-style views
+
+## What LingLang Covers
+
+LingLang is designed to model languages as structured, interconnected systems rather than isolated notes. The DSL covers most major areas of linguistics:
+
+### Core Coverage
+
+* **Language metadata**
+
+  * languages, stages, dialects, registers
+* **Phonology**
+
+  * phoneme inventories, syllable structure, allophony
+* **Lexicon**
+
+  * entries, meanings, IPA, semantic fields
+* **Grammar**
+
+  * categories, constructions, agreement, word order
+* **Morphology**
+
+  * morphemes, paradigms, derivation, inflection
+* **Examples and texts**
+
+  * glossed examples, segmented texts, usage contexts
+* **Scripts and orthography**
+
+  * graphemes, writing systems, orthographic rules
+
+### Extended Coverage
+
+* **Diachrony**
+
+  * stages, sound changes, etymology
+* **Variation**
+
+  * dialects, registers, sociolinguistic variation
+* **Analysis layer**
+
+  * competing interpretations, explicit analyses
+* **Irregularities**
+
+  * exceptions, blocking rules, non-regular behavior
+* **Uncertainty**
+
+  * partial knowledge, alternative reconstructions
+
+### Structural Features
+
+* **Typed references**
+
+  * explicit links between linguistic objects
+* **Canonical AST model**
+
+  * stable internal representation for tooling
+* **Schema-driven validation**
+
+  * machine-readable rules for all blocks
+* **Short and long syntax**
+
+  * ergonomic writing vs. canonical representation
+* **Conformance levels**
+
+  * stable core vs. extensible advanced features
+
+## What This Enables
+
+Because LingLang combines structured data with a readable syntax, it can be used as:
+
+* a **documentation format** for languages
+* a **generation base** for conlang tools
+* an **analysis model** for linguistic inspection
+* a **render source** for dictionaries, grammars, and glosses
+* an **exchange format** between tools and systems
+
 ## Current Status
 
 The repository currently contains the pre-`1.0` evolution line plus the first stable `1.0.0` release:
